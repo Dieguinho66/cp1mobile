@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NativeBaseProvider, View } from 'native-base';
+
+import AdicionarTarefa from "./src/components/AdicionarTarefas";
+import { ProvedorEstadoGlobal } from "./src/hooks/EstadoGlobal";
+
+
+import ListaTarefas from "./src/components/ListaTarefas";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider>
+      <ProvedorEstadoGlobal>
+        <View style={{ flex: 1 }}>
+          <AdicionarTarefa />
+          <ListaTarefas />
+        </View>
+      </ProvedorEstadoGlobal>
+    </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
